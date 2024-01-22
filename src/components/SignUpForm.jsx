@@ -53,6 +53,7 @@ const SignUpForm = ({ token, setToken }) => {
             type="text"
             id="username"
             value={username}
+            minLength={8}
             onChange={(e) => setUsername(e.target.value)}
           />
         </label>
