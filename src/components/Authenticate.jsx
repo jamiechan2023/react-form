@@ -12,7 +12,7 @@ const Authenticate = ({ token, setToken }) => {
           "https://fsa-jwt-practice.herokuapp.com/authenticate",
           {
             method: "GET",
-            header: {
+            headers: {
               "Content-Type": "application/json",
               Authorization: `Bearer ${token}`,
             },
