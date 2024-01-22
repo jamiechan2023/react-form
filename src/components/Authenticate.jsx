@@ -4,20 +4,25 @@ const Authenticate = ({ token, setToken }) => {
   const [successMessage, setSuccessMessage] = useState(null);
   async function handleClick() {
     try {
-      const response = await fetch(
-        "https://fsa-jwt-practice.herokuapp.com/authenticate",
-        {
-          method: "GET",
-          header: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      const result = await response.json();
-      console.log("get result for authenticate-->", result);
-      setSuccessMessage(result.message);
-      return result;
+      setError(null);
+      if (token === null) {
+        setError("Please sign-up before auathenticate!");
+      } else {
+        const response = await fetch(
+          "https://fsa-jwt-practice.herokuapp.com/authenticate",
+          {
+            method: "GET",
+            header: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        const result = await response.json();
+        console.log("get result for authenticate-->", result);
+        setSuccessMessage(result.message);
+        return result;
+      }
     } catch (error) {
       setError(error.message);
     }
