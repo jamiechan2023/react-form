@@ -20,7 +20,9 @@ const Authenticate = ({ token, setToken }) => {
         );
         const result = await response.json();
         console.log("get result for authenticate-->", result);
-        setSuccessMessage(result.message);
+        setSuccessMessage(
+          `${result.message} (Username: ${result.data.username})`
+        );
         return result;
       }
     } catch (error) {
